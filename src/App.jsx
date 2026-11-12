@@ -17,6 +17,7 @@ import {
   Settings2,
   Sparkles,
   Star,
+  Sun,
   Volume2,
   VolumeX,
   X,
@@ -25,29 +26,71 @@ import {
 import "./styles.css";
 
 const lessons = [
-  { place: "Plaza del sol", word: "Hello!", translation: "Hola", npc: "Milo", emoji: "🧑‍🌾", prompt: "¿Cómo saludas a alguien en inglés?", choices: ["Goodbye", "Hello", "Please"], answer: "Hello", line: "¡Al fin llegas, viajero! La plaza ha olvidado cómo saludar. ¿Nos ayudas?" },
-  { place: "Mercado de bayas", word: "Apple", translation: "Manzana", npc: "Luna", emoji: "🧑‍🍳", prompt: "¿Cómo se dice “manzana” en inglés?", choices: ["Apple", "Bread", "Water"], answer: "Apple", line: "¡Qué bueno que viniste! Necesito recuperar el nombre de esta fruta roja." },
-  { place: "Río tranquilo", word: "Water", translation: "Agua", npc: "Kai", emoji: "🧑‍🎣", prompt: "¿Qué palabra significa “agua”?", choices: ["Fire", "Water", "Tree"], answer: "Water", line: "El río perdió su nombre. ¿Recuerdas cómo se dice agua en inglés?" },
-  { place: "Bosque de luciérnagas", word: "Friend", translation: "Amigo/a", npc: "Pip", emoji: "🧝", prompt: "¿Cómo llamas a un “amigo” en inglés?", choices: ["Family", "Friend", "Teacher"], answer: "Friend", line: "¡Hola, nuevo amigo! Ayúdame a recordar esta palabra tan especial." },
-  { place: "Colina de las nubes", word: "Beautiful", translation: "Hermoso/a", npc: "Sol", emoji: "🧑‍🎨", prompt: "El cielo está “hermoso”. ¿Qué palabra usamos?", choices: ["Small", "Beautiful", "Happy"], answer: "Beautiful", line: "Mira esas nubes. Esta vista es hermosa, pero la niebla borró esa palabra." },
-  { place: "Estación del tren", word: "Where", translation: "Dónde", npc: "Theo", emoji: "🧑‍✈️", prompt: "¿Qué palabra usarías para preguntar “dónde”?", choices: ["When", "Who", "Where"], answer: "Where", line: "¡Pasajero a bordo! El letrero perdió una palabra muy útil para preguntar." },
-  { place: "Jardín secreto", word: "Thank you", translation: "Gracias", npc: "Violet", emoji: "🧚", prompt: "¿Cómo dices “gracias” en inglés?", choices: ["Thank you", "Good morning", "Excuse me"], answer: "Thank you", line: "Las flores vuelven a crecer con palabras amables. ¿Me ayudas con esta?" },
-  { place: "Torre de estrellas", word: "I am happy", translation: "Estoy feliz", npc: "Nova", emoji: "🧙", prompt: "Completa: “Estoy feliz” en inglés.", choices: ["I am happy", "I am hungry", "I am here"], answer: "I am happy", line: "Una estrella se apagó. Dime cómo contarías que estás feliz." },
-  { place: "Puente arcoíris", word: "Can I help?", translation: "¿Puedo ayudar?", npc: "Robin", emoji: "🦸", prompt: "¿Cómo ofreces ayuda en inglés?", choices: ["Can I help?", "Can I go?", "Can you see?"], answer: "Can I help?", line: "El puente se ilumina con buenas acciones. ¿Qué dirías para ofrecer ayuda?" },
-  { place: "Castillo de Stellious", word: "We did it!", translation: "¡Lo logramos!", npc: "Rey Eli", emoji: "🤴", prompt: "¡Salvaste la aldea! ¿Cómo dices “lo logramos”?", choices: ["We did it!", "We are lost!", "We can wait!"], answer: "We did it!", line: "¡La última prueba, héroe! Juntemos las palabras para celebrar nuestra aventura." },
+  { place: "Plaza del sol", word: "Hello!", translation: "Hola", npc: "Milo", avatar: "farmer", prompt: "¿Cómo saludas a alguien en inglés?", choices: ["Goodbye", "Hello", "Please"], answer: "Hello", line: "¡Al fin llegas, viajero! La plaza ha olvidado cómo saludar. ¿Nos ayudas?" },
+  { place: "Mercado de bayas", word: "Apple", translation: "Manzana", npc: "Luna", avatar: "cook", prompt: "¿Cómo se dice “manzana” en inglés?", choices: ["Apple", "Bread", "Water"], answer: "Apple", line: "¡Qué bueno que viniste! Necesito recuperar el nombre de esta fruta roja." },
+  { place: "Río tranquilo", word: "Water", translation: "Agua", npc: "Kai", avatar: "fisher", prompt: "¿Qué palabra significa “agua”?", choices: ["Fire", "Water", "Tree"], answer: "Water", line: "El río perdió su nombre. ¿Recuerdas cómo se dice agua en inglés?" },
+  { place: "Bosque de luciérnagas", word: "Friend", translation: "Amigo/a", npc: "Pip", avatar: "elf", prompt: "¿Cómo llamas a un “amigo” en inglés?", choices: ["Family", "Friend", "Teacher"], answer: "Friend", line: "¡Hola, nuevo amigo! Ayúdame a recordar esta palabra tan especial." },
+  { place: "Colina de las nubes", word: "Beautiful", translation: "Hermoso/a", npc: "Sol", avatar: "artist", prompt: "El cielo está “hermoso”. ¿Qué palabra usamos?", choices: ["Small", "Beautiful", "Happy"], answer: "Beautiful", line: "Mira esas nubes. Esta vista es hermosa, pero la niebla borró esa palabra." },
+  { place: "Estación del tren", word: "Where", translation: "Dónde", npc: "Theo", avatar: "conductor", prompt: "¿Qué palabra usarías para preguntar “dónde”?", choices: ["When", "Who", "Where"], answer: "Where", line: "¡Pasajero a bordo! El letrero perdió una palabra muy útil para preguntar." },
+  { place: "Jardín secreto", word: "Thank you", translation: "Gracias", npc: "Violet", avatar: "fairy", prompt: "¿Cómo dices “gracias” en inglés?", choices: ["Thank you", "Good morning", "Excuse me"], answer: "Thank you", line: "Las flores vuelven a crecer con palabras amables. ¿Me ayudas con esta?" },
+  { place: "Torre de estrellas", word: "I am happy", translation: "Estoy feliz", npc: "Nova", avatar: "wizard", prompt: "Completa: “Estoy feliz” en inglés.", choices: ["I am happy", "I am hungry", "I am here"], answer: "I am happy", line: "Una estrella se apagó. Dime cómo contarías que estás feliz." },
+  { place: "Puente arcoíris", word: "Can I help?", translation: "¿Puedo ayudar?", npc: "Robin", avatar: "hero", prompt: "¿Cómo ofreces ayuda en inglés?", choices: ["Can I help?", "Can I go?", "Can you see?"], answer: "Can I help?", line: "El puente se ilumina con buenas acciones. ¿Qué dirías para ofrecer ayuda?" },
+  { place: "Castillo de Stellious", word: "We did it!", translation: "¡Lo logramos!", npc: "Rey Eli", avatar: "king", prompt: "¡Salvaste la aldea! ¿Cómo dices “lo logramos”?", choices: ["We did it!", "We are lost!", "We can wait!"], answer: "We did it!", line: "¡La última prueba, héroe! Juntemos las palabras para celebrar nuestra aventura." },
 ];
 
-const avatars = ["🧑🏻‍🚀", "🧝", "🧙", "🧑‍🎨", "🦸", "🧑‍🌾"];
+const avatars = [
+  { id: "explorer", label: "Explorador" },
+  { id: "elf", label: "Elfo" },
+  { id: "wizard", label: "Mago" },
+  { id: "artist", label: "Artista" },
+  { id: "hero", label: "Héroe" },
+  { id: "farmer", label: "Granjero" },
+];
+const spriteRows = [
+  "  HHH   ",
+  " HHHHH  ",
+  " HHSSHH ",
+  " HHSESH ",
+  "  SSS   ",
+  " TTTTT  ",
+  " TTATT  ",
+  "  TTT   ",
+  "  B B   ",
+];
+
+function PixelSprite({ type, label, className = "" }) {
+  return (
+    <span
+      className={`pixel-sprite sprite-${type} ${className}`}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : "true"}
+    >
+      {spriteRows.flatMap((row, rowIndex) =>
+        [...row].map((pixel, columnIndex) =>
+          pixel === " " ? null : (
+            <i
+              key={`${rowIndex}-${columnIndex}`}
+              className={`pixel-${pixel}`}
+              style={{ gridRow: rowIndex + 1, gridColumn: columnIndex + 1 }}
+            />
+          ),
+        ),
+      )}
+    </span>
+  );
+}
+
 const savedProfile = () => {
   try {
     const saved = JSON.parse(localStorage.getItem("stellious-profile") || "{}");
     return {
       name: typeof saved.name === "string" && saved.name.trim() ? saved.name : "Aventurero",
-      avatar: avatars.includes(saved.avatar) ? saved.avatar : avatars[0],
+      avatar: avatars.some(({ id }) => id === saved.avatar) ? saved.avatar : avatars[0].id,
       completed: Array.isArray(saved.completed) ? saved.completed.filter((id) => Number.isInteger(id) && id >= 0 && id < lessons.length) : [],
     };
   } catch {
-    return { name: "Aventurero", avatar: avatars[0], completed: [] };
+    return { name: "Aventurero", avatar: avatars[0].id, completed: [] };
   }
 };
 
@@ -128,7 +171,7 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <a className="brand" href="#inicio" aria-label="Stellious, inicio">
-          <span className="brand-mark">✦</span>
+          <span className="brand-mark"><span /></span>
           <span><strong>stellious<span className="brand-dot">.</span></strong><small>LEARN ENGLISH BY PLAYING</small></span>
         </a>
         <nav className="main-nav" aria-label="Navegación principal">
@@ -140,7 +183,7 @@ function App() {
             {musicOn ? <Volume2 size={17} /> : <VolumeX size={17} />}<span>Música {musicOn ? "on" : "off"}</span>
           </button>
           <button className="account-button" onClick={() => { setDraftName(profile.name); setDraftAvatar(profile.avatar); setProfileOpen(true); }}>
-            <span className="account-avatar">{profile.avatar}</span><span className="account-name">{profile.name}</span><ChevronDown size={15} />
+            <span className="account-avatar"><PixelSprite type={profile.avatar} /></span><span className="account-name">{profile.name}</span><ChevronDown size={15} />
           </button>
         </div>
       </header>
@@ -149,7 +192,7 @@ function App() {
         <aside className="sidebar">
           <div className="sidebar-title"><span>TU AVENTURA</span><button aria-label="Editar perfil" onClick={() => { setDraftName(profile.name); setDraftAvatar(profile.avatar); setProfileOpen(true); }}><Settings2 size={17} /></button></div>
           <div className="profile-card">
-            <div className="profile-avatar">{profile.avatar}<span className="online-dot" /></div>
+            <div className="profile-avatar"><PixelSprite type={profile.avatar} /><span className="online-dot" /></div>
             <div className="profile-copy"><strong>{profile.name}</strong><span>Aprendiz de inglés</span></div>
             <span className="rank-pill"><Sparkles size={12} /> {xp >= 100 ? "EXPLORADOR" : "NOVATO"}</span>
             <div className="profile-stats">
@@ -179,7 +222,7 @@ function App() {
         <section className="adventure">
           <div className="scene-topline">
             <div className="breadcrumb"><span>STELLIOUS</span><ChevronRight size={14} /><strong>LA ALDEA</strong></div>
-            <span className="season"><span className="season-sun">☀</span> Día 1 <i>·</i> Primavera</span>
+            <span className="season"><Sun className="season-sun" size={14} /> Día 1 <i>·</i> Primavera</span>
           </div>
 
           <div className="welcome-row">
@@ -188,30 +231,30 @@ function App() {
               <h1>¡Hola, {profile.name}!</h1>
               <p className="welcome-subtitle">La aldea de Stellious te da la bienvenida.</p>
             </div>
-            <div className="welcome-note"><span className="note-flower">✿</span><span><strong>Tu primera aventura</strong><small>¿Listo para aprender?</small></span><Sparkles size={17} /></div>
+            <div className="welcome-note"><span className="note-flower" /><span><strong>Tu primera aventura</strong><small>¿Listo para aprender?</small></span><Sparkles size={17} /></div>
           </div>
 
           <section className="village" aria-label="Ilustración de la aldea de Stellious">
             <div className="sky">
-              <div className="sun-pixel"><span>☀</span></div>
+              <div className="sun-pixel" />
               <div className="cloud cloud-one" /><div className="cloud cloud-two" />
-              <div className="bird bird-one">⌁</div><div className="bird bird-two">⌁</div>
+              <div className="bird bird-one" /><div className="bird bird-two" />
               <div className="mountain mountain-back" /><div className="mountain mountain-front" />
             </div>
             <div className="distant-hill" />
-            <div className="forest forest-left"><span>🌲</span><span>🌳</span><span>🌲</span></div>
-            <div className="forest forest-right"><span>🌳</span><span>🌲</span><span>🌳</span></div>
+            <div className="forest forest-left" aria-hidden="true"><span /><span /><span /></div>
+            <div className="forest forest-right" aria-hidden="true"><span /><span /><span /></div>
             <div className="village-houses">
               <div className="house house-left"><i /><b /><span /></div>
               <div className="house house-main"><i /><b /><span /></div>
               <div className="house house-right"><i /><b /><span /></div>
             </div>
             <div className="pathway" />
-            <div className="flowers flower-left">✿　✿　✿</div><div className="flowers flower-right">✿　✿　✿</div>
-            <div className="scene-title">STELLIOUS <span>✦</span></div>
+            <div className="flowers flower-left" aria-hidden="true"><span /><span /><span /></div><div className="flowers flower-right" aria-hidden="true"><span /><span /><span /></div>
+            <div className="scene-title">STELLIOUS</div>
             <div className="scene-location"><Compass size={14} /> ALDEA DE STELLIOUS</div>
-            <button className="villager villager-main" onClick={() => openLesson(unlocked)} aria-label={`Hablar con ${lessons[unlocked].npc}, personaje de la plaza`}><span>🧑‍🌾</span><small>¡Hola!</small><i>●</i></button>
-            <button className="villager villager-side" onClick={() => openLesson(unlocked)} aria-label="Explorar la aldea"><span>{profile.avatar}</span></button>
+            <button className="villager villager-main" onClick={() => openLesson(unlocked)} aria-label={`Hablar con ${lessons[unlocked].npc}, personaje de la plaza`}><PixelSprite type={lessons[unlocked].avatar} /><small>¡Hola!</small><i /></button>
+            <button className="villager villager-side" onClick={() => openLesson(unlocked)} aria-label="Explorar la aldea"><PixelSprite type={profile.avatar} /></button>
             <div className="map-controls">
               <button onClick={() => openLesson(Math.max(0, unlocked - 1))} aria-label="Zona anterior"><ArrowLeft size={17} /></button>
               <span>{String(unlocked + 1).padStart(2, "0")} / 10</span>
@@ -230,7 +273,7 @@ function App() {
             <span className="level-count"><Star size={15} /> 10 niveles</span>
           </section>
           <section className="next-card">
-            <div className="next-emblem"><span>⚔️</span><Sparkles size={16} /></div>
+            <div className="next-emblem"><span className="pixel-sword" aria-hidden="true" /><Sparkles size={16} /></div>
             <div className="next-copy"><p>PRÓXIMA AVENTURA <i>· NIVEL {unlocked + 1}</i></p><strong>{lessons[unlocked].place}</strong><span>Practica “{lessons[unlocked].word}” con {lessons[unlocked].npc}</span></div>
             <button onClick={() => openLesson(unlocked)} className="play-button"><Play size={16} fill="currentColor" /> Jugar</button>
           </section>
@@ -246,7 +289,7 @@ function App() {
               <button className="icon-button" aria-label="Cerrar nivel" onClick={() => setSelectedLevel(null)}><X size={19} /></button>
             </div>
             <div className="boss-intro">
-              <div className="boss-avatar">{currentLesson.emoji}<span>✦</span></div>
+              <div className="boss-avatar"><PixelSprite type={currentLesson.avatar} /><span /></div>
               <div className="boss-text"><span className="boss-label"><Crown size={13} /> EL GUARDIÁN DE {currentLesson.place.split(" ")[0].toUpperCase()}</span><strong>{currentLesson.npc} <small>· aldeano</small></strong><p>{currentLesson.line}</p></div>
             </div>
             <div className="question-card">
@@ -281,7 +324,7 @@ function App() {
             <label className="name-label" htmlFor="player-name">¿Cómo te llamas?</label>
             <input id="player-name" className="name-input" maxLength={18} value={draftName} onChange={(event) => setDraftName(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") saveProfile(); }} placeholder="Tu nombre de aventurero" />
             <span className="avatar-label">Elige tu aspecto</span>
-            <div className="avatar-picker">{avatars.map((avatar) => <button key={avatar} onClick={() => setDraftAvatar(avatar)} className={draftAvatar === avatar ? "avatar-choice avatar-selected" : "avatar-choice"} aria-label={`Elegir personaje ${avatar}`} aria-pressed={draftAvatar === avatar}>{avatar}</button>)}</div>
+            <div className="avatar-picker">{avatars.map((avatar) => <button key={avatar.id} onClick={() => setDraftAvatar(avatar.id)} className={draftAvatar === avatar.id ? "avatar-choice avatar-selected" : "avatar-choice"} aria-label={`Elegir personaje: ${avatar.label}`} aria-pressed={draftAvatar === avatar.id}><PixelSprite type={avatar.id} /></button>)}</div>
             <button className="continue-button save-profile-button" onClick={saveProfile}>Guardar personaje <Check size={16} /></button>
           </section>
         </div>
